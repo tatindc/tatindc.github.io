@@ -1,225 +1,989 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TATIN DC — Musician</title>
-  <meta name="description" content="Tatin DC — independent OPM, soul, R&B and jazz artist.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tatin DC — Independent artist from Manila, Philippines." />
+  <title>TATIN DC — Independent Artist</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
-    :root {
-      --bg:#0b0b0b; --text:#f3f0e8; --muted:#9d9a92;
-      --line:#292929; --card:#141414; --accent:#d9ff55;
+    :root{
+      --bg:#080909;
+      --surface:#111313;
+      --text:#f2f0e8;
+      --muted:#969a96;
+      --line:rgba(242,240,232,.14);
+      --accent:#d9ff55;
+      --max:1320px;
+      --pad:clamp(20px,4vw,58px);
     }
-    * { box-sizing:border-box; margin:0; padding:0; }
-    html { scroll-behavior:smooth; }
-    body { background:var(--bg); color:var(--text); font-family:"DM Sans",sans-serif; line-height:1.5; }
-    a { color:inherit; text-decoration:none; }
-    .wrap { width:min(1180px, calc(100% - 40px)); margin:auto; }
 
-    nav {
-      position:fixed; top:0; left:0; width:100%; z-index:20;
-      backdrop-filter:blur(14px); background:rgba(11,11,11,.72);
-      border-bottom:1px solid rgba(255,255,255,.07);
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:"DM Sans",Arial,sans-serif;
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
     }
-    .nav-inner { height:76px; display:flex; align-items:center; justify-content:space-between; }
-    .logo { font-family:"Space Grotesk"; font-weight:700; letter-spacing:-.06em; font-size:25px; }
-    .navlinks { display:flex; gap:28px; color:#aaa; font-size:13px; text-transform:uppercase; letter-spacing:.12em; }
-    .navlinks a:hover { color:var(--text); }
 
-    .hero { min-height:100vh; display:grid; align-items:end; padding:150px 0 70px; }
-    .eyebrow { color:var(--accent); font-size:12px; text-transform:uppercase; letter-spacing:.22em; margin-bottom:22px; }
-    h1 { font-family:"Space Grotesk"; font-size:clamp(75px, 15vw, 190px); line-height:.78; letter-spacing:-.09em; max-width:1000px; }
-    .hero-bottom { display:flex; justify-content:space-between; align-items:end; gap:30px; margin-top:55px; }
-    .hero-copy { max-width:480px; color:#aaa; font-size:17px; }
-    .btn {
-      display:inline-flex; align-items:center; gap:12px; padding:14px 20px;
-      border:1px solid #555; font-size:12px; text-transform:uppercase; letter-spacing:.14em;
-      transition:.25s;
+    a{
+      color:inherit;
+      text-decoration:none;
     }
-    .btn:hover { background:var(--accent); color:#111; border-color:var(--accent); }
-    .dot { width:8px; height:8px; border-radius:50%; background:var(--accent); display:inline-block; }
 
-    section { padding:120px 0; border-top:1px solid var(--line); }
-    .section-head { display:flex; justify-content:space-between; gap:30px; margin-bottom:45px; }
-    .section-label { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.18em; }
-    h2 { font-family:"Space Grotesk"; font-size:clamp(45px, 7vw, 88px); line-height:.9; letter-spacing:-.07em; }
-
-    .release { display:grid; grid-template-columns:1.05fr 1fr; gap:55px; align-items:center; }
-    .cover {
-      aspect-ratio:1; background:
-        radial-gradient(circle at 70% 25%, #d9ff55 0 4%, transparent 4.5%),
-        radial-gradient(circle at 30% 75%, #7c4dff 0 12%, transparent 12.5%),
-        linear-gradient(135deg,#252525,#090909 55%,#343434);
-      position:relative; overflow:hidden;
+    img{
+      display:block;
+      max-width:100%;
     }
-    .cover:before {
-      content:"TATIN"; position:absolute; font-family:"Space Grotesk"; font-weight:700;
-      font-size:clamp(70px,10vw,140px); letter-spacing:-.09em; transform:rotate(-90deg);
-      left:-58px; bottom:85px; opacity:.92;
+
+    .container{
+      width:min(var(--max),calc(100% - 2*var(--pad)));
+      margin:auto;
     }
-    .cover:after {
-      content:"TEST RELEASE / 2026"; position:absolute; right:24px; bottom:22px;
-      font-size:11px; letter-spacing:.15em; color:#bbb;
+
+    .nav{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:20;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:20px var(--pad);
+      background:linear-gradient(to bottom,rgba(8,9,9,.82),rgba(8,9,9,0));
+      backdrop-filter:blur(5px);
     }
-    .release-info h3 { font-family:"Space Grotesk"; font-size:clamp(40px,5vw,68px); letter-spacing:-.06em; line-height:.95; margin:12px 0 20px; }
-    .release-info p { color:#999; max-width:480px; margin-bottom:28px; }
-    .platforms { display:flex; flex-wrap:wrap; gap:10px; }
-    .pill { border:1px solid #383838; padding:9px 13px; font-size:12px; color:#bbb; }
 
-    .tracks { border-top:1px solid var(--line); }
-    .track { display:grid; grid-template-columns:55px 1fr auto; align-items:center; gap:25px; padding:22px 0; border-bottom:1px solid var(--line); }
-    .num { color:#666; font-size:12px; }
-    .track-title { font-family:"Space Grotesk"; font-size:21px; }
-    .track-meta { color:#666; font-size:12px; }
-    .play { width:38px; height:38px; border:1px solid #444; border-radius:50%; display:grid; place-items:center; font-size:11px; }
-    .track:hover .play { background:var(--accent); color:#111; border-color:var(--accent); }
-
-    .about { display:grid; grid-template-columns:1fr 1fr; gap:70px; }
-    .about p { color:#aaa; font-size:20px; line-height:1.55; }
-    .facts { display:grid; grid-template-columns:1fr 1fr; gap:30px; }
-    .fact { border-top:1px solid #333; padding-top:14px; }
-    .fact b { display:block; font-family:"Space Grotesk"; font-size:27px; margin-bottom:5px; }
-    .fact span { color:#777; font-size:12px; text-transform:uppercase; letter-spacing:.12em; }
-
-    .video {
-      aspect-ratio:16/7; background:linear-gradient(120deg,#1b1b1b,#050505);
-      display:grid; place-items:center; border:1px solid #252525; position:relative; overflow:hidden;
+    .logo{
+      font-family:"Horizon","Arial Narrow",sans-serif;
+      font-weight:800;
+      font-size:18px;
+      letter-spacing:.11em;
     }
-    .video:before { content:"TATIN DC"; font-family:"Space Grotesk"; font-size:clamp(60px,12vw,150px); font-weight:700; letter-spacing:-.09em; opacity:.08; }
-    .video .playbig { position:absolute; width:76px; height:76px; border:1px solid #777; border-radius:50%; display:grid; place-items:center; }
-    .video:hover .playbig { background:var(--accent); color:#111; border-color:var(--accent); }
 
-    .contact { display:grid; grid-template-columns:1fr 1fr; gap:50px; }
-    .contact h2 { max-width:600px; }
-    .contact-right { display:flex; flex-direction:column; justify-content:end; gap:15px; }
-    .contact-link { padding:18px 0; border-bottom:1px solid #333; display:flex; justify-content:space-between; color:#aaa; }
-    .contact-link:hover { color:var(--accent); }
+    .navlinks{
+      display:flex;
+      gap:28px;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
 
-    footer { padding:30px 0; border-top:1px solid var(--line); color:#666; font-size:12px; display:flex; justify-content:space-between; }
+    .navlinks a{
+      opacity:.78;
+      transition:.2s;
+    }
 
-    @media(max-width:760px) {
-      .wrap { width:min(100% - 28px,1180px); }
-      .navlinks { display:none; }
-      .hero { min-height:88vh; padding-bottom:45px; }
-      .hero-bottom, .release, .about, .contact { grid-template-columns:1fr; display:grid; gap:35px; }
-      section { padding:80px 0; }
-      .release { gap:35px; }
-      .section-head { display:block; }
-      .section-head .section-label { margin-bottom:20px; }
-      .track { grid-template-columns:35px 1fr auto; gap:12px; }
-      .track-meta { display:none; }
-      footer { display:block; }
-      footer span { display:block; margin-top:8px; }
+    .navlinks a:hover{
+      opacity:1;
+      color:var(--accent);
+    }
+
+    .hero{
+      min-height:100svh;
+      display:flex;
+      align-items:flex-end;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-photo{
+      position:absolute;
+      inset:0;
+      z-index:0;
+    }
+
+    .hero-photo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+    }
+
+    .hero-photo:after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        to top,
+        rgba(8,9,9,.92) 0%,
+        rgba(8,9,9,.22) 48%,
+        rgba(8,9,9,.08) 100%
+      );
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:1;
+      padding:0 var(--pad) 7vh;
+      width:100%;
+    }
+
+    .eyebrow{
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--accent);
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0;
+      font-family:"Horizon","Arial Narrow","Space Grotesk",sans-serif;
+      font-size:clamp(64px,14vw,190px);
+      line-height:.82;
+      letter-spacing:-.045em;
+      text-transform:uppercase;
+    }
+
+    .hero-meta{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:30px;
+      margin-top:30px;
+    }
+
+    .hero-tag{
+      font-size:clamp(18px,2vw,27px);
+      max-width:620px;
+    }
+
+    .location{
+      font-size:11px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    section{
+      padding:120px 0;
+      border-top:1px solid var(--line);
+    }
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      gap:30px;
+      align-items:flex-end;
+      margin-bottom:58px;
+    }
+
+    .kicker{
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--accent);
+    }
+
+    .section-title{
+      margin:10px 0 0;
+      font-family:"Horizon","Arial Narrow","Space Grotesk",sans-serif;
+      font-size:clamp(44px,7vw,90px);
+      line-height:.9;
+      text-transform:uppercase;
+      letter-spacing:-.035em;
+    }
+
+    .release{
+      display:grid;
+      grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);
+      gap:7vw;
+      align-items:center;
+    }
+
+    .cover-wrap{
+      position:relative;
+    }
+
+    .cover-wrap img{
+      width:100%;
+      aspect-ratio:1;
+      object-fit:cover;
+    }
+
+    .cover-label{
+      position:absolute;
+      left:20px;
+      bottom:18px;
+      background:var(--accent);
+      color:#080909;
+      padding:7px 10px;
+      font-size:10px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+    }
+
+    .release-info h3{
+      font-family:"Horizon","Arial Narrow",sans-serif;
+      font-size:clamp(42px,6vw,80px);
+      line-height:.9;
+      margin:0 0 18px;
+      text-transform:uppercase;
+    }
+
+    .release-info p{
+      color:var(--muted);
+      max-width:520px;
+      font-size:17px;
+    }
+
+    .meta-row{
+      display:flex;
+      gap:22px;
+      color:var(--muted);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      margin:26px 0;
+    }
+
+    .buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .btn{
+      border:1px solid var(--line);
+      padding:12px 16px;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      transition:.2s;
+    }
+
+    .btn:hover{
+      background:var(--accent);
+      border-color:var(--accent);
+      color:#080909;
+    }
+
+    .music-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .track-card{
+      border-top:1px solid var(--line);
+      padding-top:16px;
+    }
+
+    .track-card img{
+      width:100%;
+      aspect-ratio:1;
+      object-fit:cover;
+      margin-bottom:18px;
+    }
+
+    .track-number{
+      color:var(--accent);
+      font-size:10px;
+      letter-spacing:.14em;
+    }
+
+    .track-title{
+      font-family:"Horizon","Arial Narrow",sans-serif;
+      font-size:32px;
+      text-transform:uppercase;
+      margin-top:5px;
+    }
+
+    .track-year{
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10vw;
+    }
+
+    .about-big{
+      font-family:"Horizon","Arial Narrow",sans-serif;
+      text-transform:uppercase;
+      font-size:clamp(40px,6vw,82px);
+      line-height:.94;
+    }
+
+    .about-copy{
+      color:#c7c9c4;
+      font-size:19px;
+      max-width:570px;
+    }
+
+    .about-copy strong{
+      color:var(--text);
+    }
+
+    .facts{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      border-top:1px solid var(--line);
+      margin-top:45px;
+    }
+
+    .fact{
+      padding:18px 0;
+      border-bottom:1px solid var(--line);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .fact:nth-child(odd){
+      margin-right:15px;
+    }
+
+    .fact span{
+      display:block;
+      color:var(--muted);
+      margin-bottom:4px;
+    }
+
+    .visuals{
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      gap:18px;
+    }
+
+    .visual{
+      position:relative;
+      overflow:hidden;
+      background:#111;
+    }
+
+    .visual img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .6s;
+    }
+
+    .visual:hover img{
+      transform:scale(1.025);
+    }
+
+    .visual.large{
+      min-height:560px;
+    }
+
+    .visual.small{
+      min-height:560px;
+    }
+
+    .video-card{
+      margin-top:18px;
+      position:relative;
+      aspect-ratio:16/9;
+      overflow:hidden;
+      border:1px solid var(--line);
+    }
+
+    .video-card iframe{
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    .contact{
+      min-height:70vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .contact-title{
+      font-family:"Horizon","Arial Narrow",sans-serif;
+      font-size:clamp(58px,11vw,150px);
+      line-height:.82;
+      text-transform:uppercase;
+      letter-spacing:-.04em;
+      max-width:1050px;
+    }
+
+    .contact-bottom{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:30px;
+      margin-top:90px;
+    }
+
+    .email{
+      font-size:clamp(20px,3vw,38px);
+    }
+
+    .socials{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      justify-content:flex-end;
+    }
+
+    .socials a{
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      color:var(--muted);
+    }
+
+    .socials a:hover{
+      color:var(--accent);
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:25px 0 40px;
+      color:var(--muted);
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      display:flex;
+      justify-content:space-between;
+    }
+
+    @media(max-width:800px){
+
+      .navlinks{
+        display:none;
+      }
+
+      .hero-content{
+        padding-bottom:45px;
+      }
+
+      .hero-meta,
+      .section-head,
+      .contact-bottom{
+        display:block;
+      }
+
+      .location{
+        margin-top:20px;
+      }
+
+      section{
+        padding:80px 0;
+      }
+
+      .release,
+      .about-grid,
+      .visuals{
+        grid-template-columns:1fr;
+      }
+
+      .music-grid{
+        grid-template-columns:1fr;
+      }
+
+      .visual.large,
+      .visual.small{
+        min-height:0;
+      }
+
+      .visual img{
+        aspect-ratio:1.15;
+        object-fit:cover;
+      }
+
+      .contact-bottom{
+        margin-top:55px;
+      }
+
+      .socials{
+        justify-content:flex-start;
+        margin-top:30px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <nav>
-    <div class="wrap nav-inner">
-      <a class="logo" href="#top">TATIN DC</a>
-      <div class="navlinks">
-        <a href="#music">Music</a><a href="#about">About</a><a href="#videos">Videos</a><a href="#contact">Contact</a>
-      </div>
+
+  <nav class="nav">
+    <a class="logo" href="#home">TATIN DC</a>
+
+    <div class="navlinks">
+      <a href="#music">Music</a>
+      <a href="#about">About</a>
+      <a href="#videos">Videos</a>
+      <a href="#contact">Contact</a>
     </div>
   </nav>
 
-  <main id="top">
-    <div class="wrap hero">
-      <div>
-        <div class="eyebrow"><span class="dot"></span> Independent artist · Philippines</div>
-        <h1>TATIN<br>DC.</h1>
-        <div class="hero-bottom">
-          <p class="hero-copy">OPM, soul, R&B and jazz — songs for late nights, quiet mornings, and everything in between.</p>
-          <a class="btn" href="#music">Listen to music ↘</a>
-        </div>
+  <main id="home">
+
+    <header class="hero">
+
+      <div class="hero-photo">
+        <img src="assets/hero.jpg" alt="Tatin DC in a field">
       </div>
-    </div>
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          Independent Artist · Manila, Philippines
+        </div>
+
+        <h1>
+          TATIN<br>DC
+        </h1>
+
+        <div class="hero-meta">
+
+          <div class="hero-tag">
+            Filipino music made with quiet moments, warm melodies, and a little bit of soul.
+          </div>
+
+          <div class="location">
+            Manila, Philippines
+          </div>
+
+        </div>
+
+      </div>
+
+    </header>
+
 
     <section id="music">
-      <div class="wrap">
+
+      <div class="container">
+
         <div class="section-head">
-          <div class="section-label">01 / Latest release</div>
-          <div class="section-label">2026</div>
-        </div>
-        <div class="release">
-          <div class="cover" aria-label="Placeholder album artwork"></div>
-          <div class="release-info">
-            <div class="section-label">Single</div>
-            <h3>KAIBIGAN<br>LANG</h3>
-            <p>A temporary test release card. Replace this artwork, title and copy with the actual latest Tatin DC release when ready.</p>
-            <div class="platforms">
-              <a class="pill" href="#">Spotify ↗</a><a class="pill" href="#">Apple Music ↗</a><a class="pill" href="#">YouTube ↗</a>
-            </div>
+
+          <div>
+            <div class="kicker">01 / Music</div>
+            <h2 class="section-title">
+              Selected<br>releases.
+            </h2>
           </div>
+
         </div>
 
-        <div style="height:80px"></div>
-        <div class="section-head">
-          <div class="section-label">Selected tracks</div>
+
+        <div class="release">
+
+          <div class="cover-wrap">
+
+            <img
+              src="assets/hiwaga.png"
+              alt="Hiwaga cover art"
+            >
+
+            <div class="cover-label">
+              Latest featured release
+            </div>
+
+          </div>
+
+
+          <div class="release-info">
+
+            <div class="kicker">
+              2024 · Single
+            </div>
+
+            <h3>Hiwaga</h3>
+
+            <p>
+              A quiet, intimate corner of Tatin DC's catalog.
+              Listen on your favorite platform.
+            </p>
+
+            <div class="meta-row">
+              <span>03:53</span>
+              <span>Released July 21, 2024</span>
+            </div>
+
+            <div class="buttons">
+
+              <a
+                class="btn"
+                target="_blank"
+                rel="noopener"
+                href="https://open.spotify.com/album/76OJy2zIxbNCDMKivaLNpd?si=ND5jTlDnRZyT_kZajMqeVg"
+              >
+                Spotify ↗
+              </a>
+
+              <a
+                class="btn"
+                target="_blank"
+                rel="noopener"
+                href="https://youtu.be/60sZCErnEC8?si=vaTqbyWYOu1X5dsg"
+              >
+                YouTube ↗
+              </a>
+
+            </div>
+
+          </div>
+
         </div>
-        <div class="tracks">
-          <a class="track" href="#"><span class="num">01</span><span class="track-title">Kaibigan Lang</span><span class="track-meta">3:42</span><span class="play">▶</span></a>
-          <a class="track" href="#"><span class="num">02</span><span class="track-title">Late Night Demo</span><span class="track-meta">4:08</span><span class="play">▶</span></a>
-          <a class="track" href="#"><span class="num">03</span><span class="track-title">In Between</span><span class="track-meta">3:19</span><span class="play">▶</span></a>
-          <a class="track" href="#"><span class="num">04</span><span class="track-title">Untitled No. 4</span><span class="track-meta">5:01</span><span class="play">▶</span></a>
+
+
+        <div style="height:110px"></div>
+
+
+        <div class="music-grid">
+
+          <article class="track-card">
+
+            <img src="assets/hiwaga.png" alt="Hiwaga">
+
+            <div class="track-number">
+              01 / 2024
+            </div>
+
+            <div class="track-title">
+              Hiwaga
+            </div>
+
+            <div class="track-year">
+              Single · 3:53
+            </div>
+
+            <div class="buttons" style="margin-top:14px">
+
+              <a
+                class="btn"
+                target="_blank"
+                rel="noopener"
+                href="https://open.spotify.com/album/76OJy2zIxbNCDMKivaLNpd?si=ND5jTlDnRZyT_kZajMqeVg"
+              >
+                Listen ↗
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <article class="track-card">
+
+            <img src="assets/malumanay.png" alt="Malumanay">
+
+            <div class="track-number">
+              02 / 2023
+            </div>
+
+            <div class="track-title">
+              Malumanay
+            </div>
+
+            <div class="track-year">
+              Single · 4:12
+            </div>
+
+            <div class="buttons" style="margin-top:14px">
+
+              <a
+                class="btn"
+                target="_blank"
+                rel="noopener"
+                href="https://open.spotify.com/album/2zS1abWhx2bLvSIbTyuEVc?si=pemtdwx5Txqs0rTYQEUByA"
+              >
+                Listen ↗
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <article class="track-card">
+
+            <img src="assets/lusaw.png" alt="Lusaw">
+
+            <div class="track-number">
+              03 / 2022
+            </div>
+
+            <div class="track-title">
+              Lusaw
+            </div>
+
+            <div class="track-year">
+              Single · 4:24
+            </div>
+
+            <div class="buttons" style="margin-top:14px">
+
+              <a
+                class="btn"
+                target="_blank"
+                rel="noopener"
+                href="https://open.spotify.com/album/3x7j3tyVb7DwLydGdXunfd?si=6CL0TcdkTKGMPRJmTFWLhg"
+              >
+                Listen ↗
+              </a>
+
+            </div>
+
+          </article>
+
         </div>
+
       </div>
+
     </section>
+
 
     <section id="about">
-      <div class="wrap">
-        <div class="section-head"><div class="section-label">02 / About</div></div>
-        <div class="about">
+
+      <div class="container">
+
+        <div class="section-head">
+
           <div>
-            <h2>MADE<br>IN THE<br>QUIET.</h2>
+            <div class="kicker">02 / About</div>
+
+            <h2 class="section-title">
+              Made in<br>the quiet.
+            </h2>
           </div>
-          <div>
-            <p>Tatin DC is an independent OPM artist, songwriter and producer blending soul, R&B and jazz into intimate Filipino music.</p>
-            <div style="height:45px"></div>
-            <div class="facts">
-              <div class="fact"><b>OPM</b><span>Roots</span></div>
-              <div class="fact"><b>Soul</b><span>Sound</span></div>
-              <div class="fact"><b>R&B</b><span>Influence</span></div>
-              <div class="fact"><b>Jazz</b><span>Color</span></div>
-            </div>
-          </div>
+
         </div>
+
+
+        <div class="about-grid">
+
+          <div class="about-big">
+            Independent<br>
+            music from<br>
+            the Philippines.
+          </div>
+
+
+          <div class="about-copy">
+
+            <p>
+              <strong>Tatin DC</strong> is an independent artist from Manila,
+              Philippines, creating intimate Filipino music shaped by OPM,
+              soul, R&B and jazz.
+            </p>
+
+            <p>
+              His work leans into atmosphere, melody and storytelling —
+              songs that feel personal without needing to be loud.
+            </p>
+
+
+            <div class="facts">
+
+              <div class="fact">
+                <span>Based in</span>
+                Manila, Philippines
+              </div>
+
+              <div class="fact">
+                <span>Focus</span>
+                Songwriting · Production
+              </div>
+
+              <div class="fact">
+                <span>Sound</span>
+                OPM · Soul · R&B · Jazz
+              </div>
+
+              <div class="fact">
+                <span>Independent</span>
+                Artist / Musician
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
+
     </section>
+
 
     <section id="videos">
-      <div class="wrap">
+
+      <div class="container">
+
         <div class="section-head">
-          <div class="section-label">03 / Visuals</div>
-          <div class="section-label">Watch</div>
+
+          <div>
+            <div class="kicker">03 / Videos</div>
+
+            <h2 class="section-title">
+              Watch.
+            </h2>
+          </div>
+
         </div>
-        <a class="video" href="#">
-          <div class="playbig">▶</div>
-        </a>
+
+
+        <div class="visuals">
+
+          <div class="visual large">
+            <img
+              src="assets/visual-dark.png"
+              alt="Tatin DC visual"
+            >
+          </div>
+
+          <div class="visual small">
+            <img
+              src="assets/visual-boat.png"
+              alt="Tatin DC visual"
+            >
+          </div>
+
+        </div>
+
+
+        <div class="video-card">
+
+          <iframe
+            src="https://www.youtube.com/embed/60sZCErnEC8"
+            title="Tatin DC — Hiwaga"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+
+        </div>
+
+
+        <div class="buttons" style="margin-top:16px">
+
+          <a
+            class="btn"
+            target="_blank"
+            rel="noopener"
+            href="https://youtu.be/60sZCErnEC8?si=WREfcAkjszXd2ISf"
+          >
+            Hiwaga on YouTube ↗
+          </a>
+
+          <a
+            class="btn"
+            target="_blank"
+            rel="noopener"
+            href="https://youtu.be/qKUSrP2Kr_U?si=YM5NoGycF1pGICJ0"
+          >
+            Lusaw on YouTube ↗
+          </a>
+
+        </div>
+
       </div>
+
     </section>
 
-    <section id="contact">
-      <div class="wrap">
-        <div class="section-head"><div class="section-label">04 / Contact</div></div>
-        <div class="contact">
-          <h2>LET'S MAKE<br>SOMETHING.</h2>
-          <div class="contact-right">
-            <a class="contact-link" href="mailto:hello@tatindc.com"><span>Booking / inquiries</span><span>↗</span></a>
-            <a class="contact-link" href="#"><span>Instagram</span><span>↗</span></a>
-            <a class="contact-link" href="#"><span>YouTube</span><span>↗</span></a>
-            <a class="contact-link" href="#"><span>Spotify</span><span>↗</span></a>
-          </div>
+
+    <section id="contact" class="contact">
+
+      <div class="container">
+
+        <div class="kicker">
+          04 / Contact
         </div>
+
+        <div
+          class="contact-title"
+          style="margin-top:18px"
+        >
+          Let's make<br>
+          something.
+        </div>
+
+
+        <div class="contact-bottom">
+
+          <a
+            class="email"
+            href="mailto:tatindc.management@gmail.com"
+          >
+            tatindc.management@gmail.com
+          </a>
+
+
+          <div class="socials">
+
+            <a
+              target="_blank"
+              rel="noopener"
+              href="https://www.instagram.com/tatindc_/"
+            >
+              Instagram ↗
+            </a>
+
+            <a
+              target="_blank"
+              rel="noopener"
+              href="https://www.facebook.com/TatinDC28"
+            >
+              Facebook ↗
+            </a>
+
+            <a
+              target="_blank"
+              rel="noopener"
+              href="https://www.tiktok.com/@tatindc"
+            >
+              TikTok ↗
+            </a>
+
+            <a
+              target="_blank"
+              rel="noopener"
+              href="https://www.youtube.com/channel/UCTULzw7sg_G3ZxxhFyxCdLw"
+            >
+              YouTube ↗
+            </a>
+
+            <a
+              target="_blank"
+              rel="noopener"
+              href="https://open.spotify.com/artist/4yFub2mOdJ4oHxbxrs4HuY?si=UIRAAGvyQmSw47n8pqtaSQ"
+            >
+              Spotify ↗
+            </a>
+
+          </div>
+
+        </div>
+
       </div>
+
     </section>
+
   </main>
 
-  <footer class="wrap">
-    <span>© 2026 TATIN DC</span>
-    <span>Independent music from the Philippines.</span>
+
+  <footer class="container">
+
+    <span>
+      © 2026 TATIN DC
+    </span>
+
+    <span>
+      Independent music from the Philippines
+    </span>
+
   </footer>
+
 </body>
 </html>
